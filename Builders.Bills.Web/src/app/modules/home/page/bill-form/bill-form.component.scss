@@ -1,0 +1,97 @@
+$primary-color: #007bff;
+$secondary-color: #0069d9;
+$disabled-opacity: 0.2;
+
+.bill-form {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+
+  .form-group {
+    margin-bottom: 1rem;
+
+    label {
+      display: block;
+      margin-bottom: 0.2rem;
+    }
+
+    .form-item-error {
+      color: red;
+    }
+
+    input {
+      box-sizing: border-box;
+      width: 100%;
+      font-size: 1rem;
+      display: block;
+      line-height: 1.5;
+      color: #495057;
+      background-color: #fff;
+      background-clip: padding-box;
+      border: 1px solid #ced4da;
+      border-radius: 0.25rem;
+      transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+      padding: 0.3rem;
+
+      &:focus {
+        border-color: $primary-color;
+        box-shadow: 0 0 0 0.2rem #{$primary-color}40;
+        outline: none;
+      }
+
+      &:disabled {
+        background-color: #e9ecef;
+        border-color: #ced4da;
+        color: #6c757d;
+        cursor: not-allowed;
+      }
+
+      &:invalid {
+        border-color: red;
+      }
+
+      &[readonly] {
+        background-color: #e9ecef;
+        border-color: #ced4da;
+        color: #6c757d;
+        cursor: not-allowed;
+
+        &:focus {
+          border-color: #ced4da;
+          box-shadow: none;
+        }
+      }
+    }
+
+    .form-item-error {
+      color: red;
+      margin-top: 0.2rem;
+      font-size: 0.8rem;
+    }
+  }
+
+  .btn {
+    width: 100%;
+    background-color: $primary-color;
+    border-color: $primary-color;
+    color: #fff;
+    border: 1px solid $primary-color;
+    border-radius: 0.25rem;
+    padding: 0.5rem;
+    font-size: 1.2rem;
+    font-weight: 600;
+
+    &:hover,
+    &:focus {
+      background-color: $secondary-color;
+      border-color: $secondary-color;
+    }
+
+    &:disabled {
+      opacity: $disabled-opacity;
+      background-color: $primary-color;
+      border-color: $primary-color;
+      padding: 0.5rem 0.7rem;
+    }
+  }
+}

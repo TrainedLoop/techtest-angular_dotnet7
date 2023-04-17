@@ -1,0 +1,28 @@
+$footer-bg-color: #222;
+$footer-height: 60px;
+
+.footer {
+  width: 100%;
+  height: $footer-height;
+  position: fixed;
+  bottom: 0px;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: $footer-bg-color;
+  color: #fff;
+  z-index: 1;
+
+  a {
+    font-size: 1rem;
+    line-height: $footer-height;
+    margin: 0;
+    text-align: center;
+
+    &:hover, &:visited, &:link, &:active {
+      text-decoration: none;
+      color: inherit
+    }
+  }
+}

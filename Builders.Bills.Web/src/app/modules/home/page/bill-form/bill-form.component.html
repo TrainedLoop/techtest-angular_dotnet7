@@ -1,0 +1,93 @@
+<div class="bill-form">
+  <div class="form-group">
+    <label for="original-amount">Original Amount:</label>
+    <input type="text"
+           [(ngModel)]="bill.original_amount"
+           class="form-control"
+           id="original-amount"
+           readonly />
+  </div>
+  <div class="form-group">
+    <label for="amount">Amount:</label>
+    <input type="text"
+           [(ngModel)]="bill.amount"
+           class="form-control"
+           id="amount"
+           readonly />
+  </div>
+  <div class="form-group">
+    <label for="due-date">Due Date:</label>
+    <input type="date"
+           [(ngModel)]="bill.due_date"
+           class="form-control"
+           id="due-date"
+           readonly />
+  </div>
+  <div class="form-group">
+    <label for="interest-amount">Interest Amount Calculated:</label>
+    <input type="text"
+           [(ngModel)]="bill.interest_amount_calculated"
+           class="form-control"
+           id="interest-amount"
+           readonly />
+  </div>
+  <div class="form-group">
+    <label for="fine-amount">Fine Amount Calculated:</label>
+    <input type="text"
+           [(ngModel)]="bill.fine_amount_calculated"
+           class="form-control"
+           id="fine-amount"
+           readonly />
+  </div>
+  <form [formGroup]="form" (ngSubmit)="getBill()">
+    <div class="form-group">
+      <label for="barcode">Barcode:</label>
+      <input type="text"
+             formControlName="bar_code"
+             class="form-control"
+             id="barcode" />
+      <div *ngIf="
+          form.get('bar_code')!.invalid &&
+          (form.get('bar_code')!.dirty || form.get('bar_code')!.touched)
+        "
+           class="form-item-error">
+        <div *ngIf="form.get('bar_code')!.errors!['required']">
+          Barcode is required.
+          {{ form.get("bar_code")!.errors!["required"].message }}
+        </div>
+      </div>
+      <div *ngIf="
+          form.get('getBill_response')!.invalid
+        "
+           class="form-item-error">
+        <div *ngIf="form.get('getBill_response')!.errors!['invalid']">
+          {{ serverErrorMessage }}
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="search-payment-date">Payment Date:</label>
+      <input type="date"
+             class="form-control"
+             id="search-payment-date"
+             formControlName="payment_date" />
+      <div *ngIf="
+          form.get('payment_date')!.invalid &&
+          (form.get('payment_date')!.dirty || form.get('payment_date')!.touched)
+        "
+           class="form-item-error">
+        <div *ngIf="form.get('payment_date')!.errors!['required']">
+          Payment date is required.
+        </div>
+        <div *ngIf="form.get('payment_date')!.errors!['invalidDate']">
+          Invalid payment date.
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <button type="submit" class="btn" [disabled]="form.invalid">
+        {{ loading ? "Loading..." : "Calculate" }}
+      </button>
+    </div>
+  </form>
+</div>
