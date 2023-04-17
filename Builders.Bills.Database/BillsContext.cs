@@ -16,7 +16,8 @@ namespace Builders.Bills.Database
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlite($@"Data Source=:memory:;");
+            if (optionsBuilder.IsConfigured == false)
+                optionsBuilder.UseSqlite($@"Data Source=:memory:;");
         }
 
         public virtual DbSet<Bill> Bills { get; set; }
