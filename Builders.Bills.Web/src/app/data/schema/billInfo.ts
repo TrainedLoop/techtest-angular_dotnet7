@@ -5,4 +5,5 @@ export interface IBillInfo {
   payment_date?: string;
   interest_amount_calculated?: number;
   fine_amount_calculated?: number;
+  type?: string;
 }

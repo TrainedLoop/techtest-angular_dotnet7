@@ -1,4 +1,5 @@
 ﻿using Builders.Bills.Shared;
+using Builders.Bills.Shared.Enums;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Builders.Bills.Database.Models
@@ -17,7 +18,7 @@ namespace Builders.Bills.Database.Models
             this.PaymentDate = billCalculated.PaymentDate;
             this.FineAmountCalculated = billCalculated.FineAmountCalculated;
             this.InterestAmountCalculated = billCalculated.InterestAmountCalculated;
-
+            this.Type = billCalculated.Type;
             this.FineRate = fineRate;
             this.InterestRate = interestRate;
 
@@ -32,6 +33,7 @@ namespace Builders.Bills.Database.Models
         public string DueDate { get; set; }
         public string PaymentDate { get; set; }
         public decimal InterestAmountCalculated { get; set; }
+        public BillType Type { get; private set; }
         public decimal FineAmountCalculated { get; set; }
         public decimal FineRate { get; set; }
         public decimal InterestRate { get; set; }

@@ -1,4 +1,6 @@
-﻿namespace Builders.Bills.Shared
+﻿using Builders.Bills.Shared.Enums;
+
+namespace Builders.Bills.Shared
 {
     public interface IBillCalculated
     {
@@ -8,5 +10,6 @@
         string PaymentDate { get; }
         decimal InterestAmountCalculated { get; }
         decimal FineAmountCalculated { get; }
+        BillType Type { get; }
     }
 }

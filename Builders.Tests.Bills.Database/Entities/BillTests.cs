@@ -1,5 +1,6 @@
 ﻿using Builders.Bills.Database.Models;
 using Builders.Bills.Shared;
+using Builders.Bills.Shared.Enums;
 
 namespace Builders.Bills.Database.Tests
 {
@@ -8,7 +9,7 @@ namespace Builders.Bills.Database.Tests
     {
         internal class BillCalculatedMock : IBillCalculated
         {
-            public BillCalculatedMock(decimal originalAmount, decimal amount, string dueDate, string paymentDate, decimal fineAmountCalculated, decimal interestAmountCalculated)
+            public BillCalculatedMock(decimal originalAmount, decimal amount, string dueDate, string paymentDate, decimal fineAmountCalculated, decimal interestAmountCalculated, BillType type)
             {
                 OriginalAmount = originalAmount;
                 Amount = amount;
@@ -16,6 +17,7 @@ namespace Builders.Bills.Database.Tests
                 PaymentDate = paymentDate;
                 FineAmountCalculated = fineAmountCalculated;
                 InterestAmountCalculated = interestAmountCalculated;
+                Type = type;
             }
 
             public decimal OriginalAmount { get; private set; }
@@ -24,6 +26,7 @@ namespace Builders.Bills.Database.Tests
             public string PaymentDate { get; private set; }
             public decimal FineAmountCalculated { get; private set; }
             public decimal InterestAmountCalculated { get; private set; }
+            public BillType Type { get; private set; }
         }
 
         [TestMethod]
@@ -37,7 +40,7 @@ namespace Builders.Bills.Database.Tests
             decimal interestAmountCalculated = 0.00M;
             decimal fineRate = 0.05M;
             decimal interestRate = 0.00M;
-            var billCalculated = new BillCalculatedMock(originalAmount, amount, dueDate, paymentDate, fineAmountCalculated, interestAmountCalculated);
+            var billCalculated = new BillCalculatedMock(originalAmount, amount, dueDate, paymentDate, fineAmountCalculated, interestAmountCalculated, BillType.NORMAL);
 
             var bill = new Bill(billCalculated, fineRate, interestRate);
 

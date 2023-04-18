@@ -1,5 +1,6 @@
 ﻿using Builders.Bills.Payments;
 using Builders.Bills.Shared;
+using Builders.Bills.Shared.Enums;
 using Newtonsoft.Json;
 
 namespace Builders.Bills.Services.BillCalculator
@@ -11,6 +12,7 @@ namespace Builders.Bills.Services.BillCalculator
             OriginalAmount = bill.Amount;
             DueDate = bill.DueDate.ToString("yyyy-MM-dd");// format not specified
             PaymentDate = paymentDate.ToString("yyyy-MM-dd");// format not specified
+            Type = bill.Type;
         }
 
         [JsonProperty(PropertyName = "original_amount")]
@@ -30,5 +32,8 @@ namespace Builders.Bills.Services.BillCalculator
 
         [JsonProperty(PropertyName = "fine_amount_calculated")]
         public decimal FineAmountCalculated { get; internal set; }
+
+        [JsonProperty(PropertyName = "type")]
+        public BillType Type { get; internal set; }
     }
 }

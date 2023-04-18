@@ -96,6 +96,7 @@ namespace Builders.Tests.Bills.Services
             Assert.AreEqual(paymentDate.ToString("yyyy-MM-dd"), result.PaymentDate);
             Assert.AreEqual(500m, result.OriginalAmount);
             Assert.AreEqual(511.65m, result.Amount);
+            Assert.AreEqual("NPC", result.Type.ToString());
         }
 
         [TestMethod]
@@ -132,6 +133,7 @@ namespace Builders.Tests.Bills.Services
             Assert.AreEqual(paymentDate.ToString("yyyy-MM-dd"), result.PaymentDate);
             Assert.AreEqual(500m, result.OriginalAmount);
             Assert.AreEqual(500M, result.Amount);
+            Assert.AreEqual("NORMAL", result.Type.ToString());
         }
 
         [TestMethod]
@@ -273,6 +275,8 @@ namespace Builders.Tests.Bills.Services
             Assert.AreEqual(paymentDate.ToString("yyyy-MM-dd"), result.PaymentDate);
             Assert.AreEqual(500m, result.OriginalAmount);
             Assert.AreEqual(500M, result.Amount);
+            Assert.AreEqual("NORMAL", result.Type.ToString());
+
         }
     }
 }

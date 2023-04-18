@@ -43,7 +43,6 @@ export class BillFormComponent {
       this.form.controls['getBill_response'].setErrors(null);
       this.form.updateValueAndValidity();
     }
-    console.log(changes);
   };
 
   getBill(): void {
@@ -65,7 +64,6 @@ export class BillFormComponent {
       },
       next: (data) => {
         this.bill = data;
-        console.log('next', data);
       },
     });
   }

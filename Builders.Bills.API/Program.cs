@@ -3,6 +3,7 @@ using Builders.Bills.Services.BillCalculator;
 using Builders.Bills.Services.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
+using Newtonsoft.Json.Converters;
 using System.Diagnostics.CodeAnalysis;
 using System.Reflection;
 
@@ -18,10 +19,9 @@ builder.Services.AddCors(options =>
         });
 });
 
-// Add services to the container.
 
-builder.Services.AddControllers().AddNewtonsoftJson();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+builder.Services.AddControllers().AddNewtonsoftJson(options =>
+        options.SerializerSettings.Converters.Add(new StringEnumConverter()));
 
 builder.Services.AddSwaggerGen(
     opt =>
