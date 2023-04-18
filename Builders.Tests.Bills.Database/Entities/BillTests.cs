@@ -32,6 +32,7 @@ namespace Builders.Bills.Database.Tests
         [TestMethod]
         public void Constructor_ShouldInitializeProperties()
         {
+            int id = 0;
             decimal originalAmount = 100.00M;
             decimal amount = 105.00M;
             string dueDate = "2022-05-15";
@@ -40,7 +41,8 @@ namespace Builders.Bills.Database.Tests
             decimal interestAmountCalculated = 0.00M;
             decimal fineRate = 0.05M;
             decimal interestRate = 0.00M;
-            var billCalculated = new BillCalculatedMock(originalAmount, amount, dueDate, paymentDate, fineAmountCalculated, interestAmountCalculated, BillType.NORMAL);
+            var type = BillType.NORMAL;
+            var billCalculated = new BillCalculatedMock(originalAmount, amount, dueDate, paymentDate, fineAmountCalculated, interestAmountCalculated, type);
 
             var bill = new Bill(billCalculated, fineRate, interestRate);
 
@@ -52,7 +54,10 @@ namespace Builders.Bills.Database.Tests
             Assert.AreEqual(interestAmountCalculated, bill.InterestAmountCalculated);
             Assert.AreEqual(fineRate, bill.FineRate);
             Assert.AreEqual(interestRate, bill.InterestRate);
+            Assert.AreEqual(type, bill.Type);
             Assert.IsTrue(bill.RequestDate > DateTime.MinValue);
+            Assert.AreEqual(id, bill.Id);
+
         }
     }
 }
